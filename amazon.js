@@ -32,8 +32,9 @@ const products=[{
 }
 ]
 
-//to generate the html we will use a for each loop to iterate through the array and create the html for each product
 
+//to generate the html we will use a for each loop to iterate through the array and create the html for each product
+let productsHTML='';
 products.forEach(product => {
     const html=`  <div class="product-container">
           <div class="product-image-container">
@@ -84,4 +85,6 @@ products.forEach(product => {
           </button>
         </div>
 `
+    productsHTML+=html;
 })
+document.querySelector('.products-grid').innerHTML=productsHTML;//generates html for the products and adds it to the products grid
