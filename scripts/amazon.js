@@ -1,4 +1,5 @@
 import { cart } from "../data/cart.js"; //module import
+import { products } from "../data/products.js"; //module import
 //putting products in an array of objects to save the data
 /*
 use products from data/product  file separately to make it more organized and easier to maintain
