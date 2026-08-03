@@ -1,4 +1,4 @@
-import { cart } from "../data/cart.js"; //module import
+import { cart, addToCart } from "../data/cart.js"; //module import
 import { products } from "../data/products.js"; //module import
 //putting products in an array of objects to save the data
 /*
@@ -91,31 +91,23 @@ products.forEach((product) => {
 `;
   productsHTML += html;
 });
+
+//function to calculate the total number of items in the cart
+function updateCartQuantity() {
+  let totalItems = 0;
+  cart.forEach((cartItem) => {
+    totalItems += cartItem.quantity;
+  });
+
+  document.querySelector(".cart-quantity").innerHTML = totalItems;
+}
+
 document.querySelector(".products-grid").innerHTML = productsHTML; //generates html for the products and adds it to the products grid
 document.querySelectorAll(".js-add-to-cart-button").forEach((button, index) => {
   button.addEventListener("click", () => {
     const productId = button.dataset.productId;
 
-    let matchingItem; //if matchign
-    cart.forEach((item) => {
-      if (item.productId === productId) {
-        matchingItem = item;
-      }
-    });
-    if (matchingItem) {
-      matchingItem.quantity++;
-    } else {
-      cart.push({
-        productId: productId,
-        quantity: 1,
-      });
-    }
-
-    //calculate the total number of items in the cart
-    let totalItems = 0;
-    cart.forEach((item) => {
-      totalItems += item.quantity;
-    });
-    document.querySelector(".cart-quantity").innerHTML = totalItems;
+    addToCart(productId);
+    updateCartQuantity();
   });
 });
