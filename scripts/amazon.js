@@ -1,5 +1,6 @@
 //putting products in an array of objects to save the data
-
+/*
+use products from data/product  file separately to make it more organized and easier to maintain
 const products=[{
     image :"images/products/athletic-cotton-socks-6-pairs.jpg",
     name:'Black and Gray Athletic Cotton Socks - 6 Pairs',
@@ -10,7 +11,7 @@ const products=[{
     pricecents: 1090,
 
 },{
-    image:"images/products/intermediate-composite-basketball.jpg">,
+    image:"images/products/intermediate-composite-basketball.jpg",
     name:'Intermediate Composite Basketball',
     rating:{
         stars: 4,
@@ -21,7 +22,7 @@ const products=[{
 },
 {
               
-    image:"images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg">,
+    image:"images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg",
     name:'Adults Plain Cotton T-Shirt 2 Pack - Teal',
     rating:{
         stars: 4.5,
@@ -32,11 +33,12 @@ const products=[{
 }
 ]
 
+*/
 
 //to generate the html we will use a for each loop to iterate through the array and create the html for each product
-let productsHTML='';
-products.forEach(product => {
-    const html=`  <div class="product-container">
+let productsHTML = "";
+products.forEach((product) => {
+  const html = `  <div class="product-container">
           <div class="product-image-container">
             <img class="product-image"
                 src="${product.image}">
@@ -80,11 +82,14 @@ products.forEach(product => {
             Added
           </div>
 
-          <button class="add-to-cart-button button-primary">
+          <button class="add-to-cart-button button-primary js-add-to-cart-button">
             Add to Cart
           </button>
         </div>
-`
-    productsHTML+=html;
-})
-document.querySelector('.products-grid').innerHTML=productsHTML;//generates html for the products and adds it to the products grid
+`;
+  productsHTML += html;
+});
+document.querySelector(".products-grid").innerHTML = productsHTML; //generates html for the products and adds it to the products grid
+document.querySelectorAll(".js-add-to-cart-button").forEach((button, index) => {
+  button.addEventListener("click", () => {});
+});
