@@ -2,6 +2,10 @@ import { cart, removeFromCart } from "../data/cart.js";
 import { products } from "../data/products.js";
 import { formatPrice } from "./utils/money.js";
 
+//use dayja() external library function to get the current date and add 7 days to it, then format it as "dddd, MMMM D" (e.g., "Tuesday, June 21"). This will be used to display the estimated delivery date for the items in the cart. and
+const today = dayjs();
+const deliveryDate = today.add(7, "day").format("dddd, MMMM D");
+
 let cartSummaryHTML = "";
 
 cart.forEach((cartItem) => {
